@@ -1,0 +1,7 @@
+plugin:
+  loading:
+    - '[赴死] 插件加载中... {0}'
+  enable: '[赴死] 插件已启用. 当前版本 {0}.'
+warn:
+  not-enable: '插件将不会被启用！'
+  incomplete-config: '不完整的配置文件'
