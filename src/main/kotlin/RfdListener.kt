@@ -17,15 +17,17 @@ object RfdListener : Listener, CoroutineScope {
 
    @EventHandler
    suspend fun onPlayerKilledEvent(event: PlayerDeathEvent) {
-      val victim = event.entity
-      victim.uniqueId
       event.deathMessage = null
+      val victim = event.entity
       val killer = victim.killer ?: run {
          broadcast("§6[赴死] §3${victim.name}擅自死了！")
          return
       }
-      broadcast("§6[赴死] §3${killer.name}斩杀了${victim.name}!")
+      // 清零victim的记录
+      slots.getOrPut(victim) { Slot(victim) }.clear()
 
+      broadcast("§6[赴死] §3${killer.name}斩杀了${victim.name}!")
+      // 增添killer的记录
       slots.getOrPut(killer) { Slot(killer) }.update()
    }
    @EventHandler

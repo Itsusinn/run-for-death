@@ -5,3 +5,5 @@ import org.meowcat.rfd.data.Slot
 import java.util.concurrent.ConcurrentHashMap
 
 val slots = ConcurrentHashMap<Player, Slot>()
+
+val crazeTimes = ConcurrentHashMap<Player, Int>()

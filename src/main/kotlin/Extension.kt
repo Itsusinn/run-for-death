@@ -3,14 +3,16 @@ package org.meowcat.rfd
 import org.bukkit.Bukkit
 import org.bukkit.event.Event
 
-val logger by lazy { Bukkit.getLogger() }
+internal val logger by lazy { Bukkit.getLogger() }
 
-inline fun <reified T> T.publish()where T : Event =
-   Bukkit.getServer().getPluginManager().callEvent(this)
+internal val pluginManager = Bukkit.getServer().getPluginManager()
 
-fun broadcast(message: String) = Bukkit.broadcastMessage(message)
+internal inline fun <reified T> T.publish()where T : Event =
+   pluginManager.callEvent(this)
 
-private val start = (System.currentTimeMillis() / 1000).toInt()
+internal fun broadcast(message: String) = Bukkit.broadcastMessage(message)
+
+internal val start = (System.currentTimeMillis() / 1000).toInt()
 
 // unit: second
-fun now(): Int = (System.currentTimeMillis() / 1000).toInt() - start
+internal fun now(): Int = (System.currentTimeMillis() / 1000).toInt() - start

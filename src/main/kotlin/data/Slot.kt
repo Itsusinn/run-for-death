@@ -3,6 +3,7 @@ package org.meowcat.rfd.data
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import org.bukkit.entity.Player
+import org.meowcat.rfd.crazeTimes
 import org.meowcat.rfd.events.CrazeEvent
 import org.meowcat.rfd.now
 import org.meowcat.rfd.publish
@@ -21,11 +22,14 @@ class Slot(
       lock.withLock {
          times + now()
       }
-      // TODO
       if (check()) {
-         println("publish event")
-         val event = CrazeEvent(player)
-         event.publish()
+         crazeTimes[player] = now()
+         CrazeEvent(player).publish()
+      }
+   }
+   suspend fun clear() {
+      lock.withLock {
+         times.clear()
       }
    }
    private suspend fun check(): Boolean {
@@ -53,4 +57,5 @@ class LimitedIntArray(val size: Int) {
       if (inner.size == size) { inner.remove() }
       inner.add(value)
    }
+   fun clear() = inner.clear()
 }
