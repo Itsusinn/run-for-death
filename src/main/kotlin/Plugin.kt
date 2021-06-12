@@ -7,8 +7,8 @@ import io.izzel.taboolib.module.inject.TInject
 import io.izzel.taboolib.module.locale.TLocale
 import org.bukkit.Bukkit
 
-object RfdPlugin : Plugin() {
-   @TInject("config.yml", locale = "language", migrate = true)
+object Plugin : Plugin() {
+   @TInject("config.yml", locale = "language")
    lateinit var CONFIG: TConfig
       private set
 
@@ -18,6 +18,6 @@ object RfdPlugin : Plugin() {
 
    override fun onEnable() {
       TLocale.sendToConsole("plugin.enable", plugin.description.version)
-      plugin.server.pluginManager.registerSuspendingEvents(RfdListener, plugin)
+      plugin.server.pluginManager.registerSuspendingEvents(Listener, plugin)
    }
 }

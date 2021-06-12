@@ -33,11 +33,7 @@ class Record(
       var counter = 0
       val now = now()
       for (time in times) {
-         // FIXME
-         println("time$time")
-         if ((now - time) < KillTimeSill) {
-            counter++
-         }
+         if ((now - time) < KillTimeSill) { counter++ }
       }
       return if (counter >= KillCountSill) {
          true

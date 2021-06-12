@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.meowcat"
-version = "1.0.0-rc-fix-2"
+version = "1.0.0-rc-fix-3"
 val mccoroutine = "1.5.0"
 repositories {
    mavenCentral()
@@ -34,19 +34,17 @@ taboolib {
 
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
 
-   val excluded = setOf(
-      "org.spigotmc",
-      "net.md-5",
+   val excludedDependencySet = setOf(
       "org.jetbrains.kotlin:kotlin-stdlib",
       "org.jetbrains.kotlin:kotlin-reflect",
       "org.jetbrains.kotlin:kotlin-stdlib-common",
       "org.jetbrains:annotations"
    )
+
    dependencyFilter.exclude {
-      it.moduleGroup in excluded ||
-         it.moduleName in excluded ||
-         "${it.moduleGroup}:${it.moduleName}" in excluded
-      // println("${it.moduleGroup}:${it.moduleName}  shouldExclude:$shouldExclude")
+      it.moduleGroup in excludedDependencySet ||
+         it.moduleName in excludedDependencySet ||
+         "${it.moduleGroup}:${it.moduleName}" in excludedDependencySet
    }
    relocate("io.izzel.taboolib.loader", "${project.group}.module.internal.boot")
 }
@@ -54,9 +52,7 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
 dependencies {
    compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.4.20")
    compileOnly("com.github.MilkBowl:VaultAPI:1.7")
-   compileOnly("org.spigotmc:spigot-api:1.16.3-R0.1-SNAPSHOT") {
-      isTransitive = false
-   }
+   compileOnly("org.spigotmc:spigot-api:1.16.3-R0.1-SNAPSHOT")
    // coroutine
    implementation("com.github.shynixn.mccoroutine:mccoroutine-bukkit-api:$mccoroutine")
    implementation("com.github.shynixn.mccoroutine:mccoroutine-bukkit-core:$mccoroutine")

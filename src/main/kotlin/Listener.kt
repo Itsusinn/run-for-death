@@ -12,7 +12,7 @@ import org.meowcat.rfd.events.CrazeEvent
 import org.meowcat.rfd.events.KillCrazeEvent
 import kotlin.coroutines.CoroutineContext
 
-object RfdListener : Listener, CoroutineScope {
+object Listener : Listener, CoroutineScope {
    override val coroutineContext: CoroutineContext
       get() = Dispatchers.Default
 

@@ -6,7 +6,7 @@ import org.bukkit.OfflinePlayer
 // TODO　并发安全检查
 object Vault {
    private val api by lazy {
-      val server = RfdPlugin.plugin.server
+      val server = Plugin.plugin.server
       if (server.pluginManager.getPlugin("Vault") == null) {
          logger.warning("缺失经济插件Vault")
          return@lazy null

@@ -1,4 +1,22 @@
-enable: false
-nats: 'nats://itsusinn.site:4222'
-channel: ''
+# 阈值
+sill:
+  # 杀敌数阈值
+  kill-count-sill: 3
+  # 杀敌时间阈值, 单位秒
+  kill-time-sill: 300
+# 奖励
+reward:
+  # 狂热奖励金钱数
+  craze-reward: 200.0
+  # 狂热弑杀者奖励金钱数
+  # 建议小于狂热奖励金钱数
+  kill-craze-reward: 150.0
+# 持续时间
+duration:
+  # 狂热状态持续时间, 单位秒
+  # 在此时间内杀死狂热者可以获得奖励
+  craze-duration: 300
+  # 标亮BUFF持续时间
+  effect-duration: 60
+# 国际化
 lang: 'zh_CN'
