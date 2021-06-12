@@ -3,6 +3,7 @@ package org.meowcat.rfd
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.OfflinePlayer
 
+// TODO　并发安全检查
 object Vault {
    private val api by lazy {
       val server = RfdPlugin.plugin.server

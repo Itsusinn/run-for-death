@@ -3,16 +3,13 @@ package org.meowcat.rfd.data
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import org.bukkit.entity.Player
-import org.meowcat.rfd.crazeTimes
+import org.meowcat.rfd.* // ktlint-disable no-wildcard-imports
 import org.meowcat.rfd.events.CrazeEvent
 import org.meowcat.rfd.now
 import org.meowcat.rfd.publish
 import java.util.* // ktlint-disable no-wildcard-imports
 
-const val KillCountSill = 3
-const val KillTimeSill = 5 * 60
-
-class Slot(
+class Record(
    private val player: Player
 ) {
    private val times = LimitedIntArray(KillCountSill)

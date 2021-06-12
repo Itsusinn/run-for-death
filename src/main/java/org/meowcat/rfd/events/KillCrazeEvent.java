@@ -6,14 +6,14 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 当一个玩家陷入狂热时触发
+ * 当一个玩家杀死狂热者时触发
  */
-public class CrazeEvent extends Event {
+public class KillCrazeEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 
 	public final Player player;
 
-	public CrazeEvent(@NotNull Player player) {
+	public KillCrazeEvent(@NotNull Player player) {
 		this.player = player;
 	}
 
